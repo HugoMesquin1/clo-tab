@@ -1,7 +1,7 @@
 services:
   database:
     image: "postgres:16-alpine3.18"
-    environment:
-      POSTGRES_PASSWORD: "pass123"
+    env_file:
+      - ../.env # Carrega variáveis do arquivo .env localizado no diretório pai
     ports:
       - "5432:5432"
