@@ -6,7 +6,7 @@ const defaultMigrationOptions = {
   dryRun: true,
   dir: resolve("infra", "migrations"),
   direction: "up",
-  verbose: true,
+  log: () => {},
   migrationsTable: "pgmigrations",
 };
 
@@ -37,6 +37,7 @@ async function runPendingMigrations() {
       dbClient,
       dryRun: false,
     });
+
     return migratedMigrations;
   } finally {
     await dbClient?.end();
